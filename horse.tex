@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\usepackage{tikz}
+
+\usepackage[active,tightpage]{preview}
+
+\def\basew{10}
+\def\based{3}
+\def\sh{95}
+\PreviewBorder1.5cm
+\usetikzlibrary{3d}
+
+\colorlet{base@a}{lightgray}
+\colorlet{base@b}{lightgray!70!black}
+
+\begin{document}
+\preview
+\begin{tikzpicture}
+% Sockel
+\fill[base@a] (-.25,0,0) -- ++(\basew+.5,0,0) -- ++(0,0,-\based-.5) -- ++(-\basew-.5,0,0) -- cycle;
+\fill[base@a!\sh!black] (-.25,0,0) |- ++(\basew+.5,-.2,0) -- ++(0,0,-\based-.5) -- ++(0,.2,0) -- ++(0,0,\based+.5) -- cycle;
+% \fill[gray] (0,0) rectangle (10,.5);
+
+\fill[base@b] (0,.5,-.25) -- ++(\basew,0,0) -- ++(0,0,-\based) -- ++(-\basew,0,0) -- cycle;
+\fill[base@b!\sh!black] (0,.5,-.25) |- ++(\basew,-.5,0) -- ++(0,0,-\based) -- ++(0,.5,0) -- ++(0,0,\based) -- cycle;
+
+% feetmarker
+
+\scope[canvas is xz plane at y=.5]
+\draw (0,-.25) grid[step=.5] ++(10,-\based);
+\fill[green] (3.5,-2.5) circle[radius=2mm];
+\fill[green] (7.5,-2.5) circle[radius=2mm];
+\fill[green] (6.25,-1) circle[radius=2mm];
+\fill[green,fill opacity=.6] (2.75,-1) circle[radius=2mm];
+\endscope
+
+
+\end{tikzpicture}
+\endpreview
+\end{document}
